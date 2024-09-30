@@ -1,0 +1,125 @@
+html, * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  border: 1px solid red;
+  padding: 1em;
+  display: flex;
+
+  &__list {
+    border: 2px solid black;
+    padding: 1em 2em;
+
+    &-item {
+      border: 3px solid rgb(2, 4, 117);
+      padding: 1em;
+      margin: 0.2em;
+    }
+  }
+
+  &__output {
+    border: 2px solid black;
+    width: 100%;
+    margin: 0 1em;
+  }
+}
+
+header {
+  background-color: #262626;
+}
+
+.nav {
+  min-height: 70px;
+  display:  flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+  font-size: 1.3em;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  &__branding {
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+    margin: 0 auto;
+
+    @media screen and (max-width:768px) {
+      position: fixed;
+      right: -100%;
+      top: 70px;
+      gap: 0;
+      flex-direction: column;
+      background-color: #262626;
+      width: 100%;
+      text-align: center;
+      transition: 0.3s;
+
+      &-item {
+        margin: 1em 0;
+      }
+
+    &.active {
+      right: 0;
+    }
+    }
+
+    &-item {
+      list-style: none;
+
+      &__link {
+        transition: 0.7s ease;
+
+        &:hover {
+          color: dodgerblue;
+        }
+      }
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    cursor: pointer;
+
+    @media screen and (max-width:768px) {
+      display:block;
+
+      &.active {
+        .nav__hamburger-bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .nav__hamburger-bar:nth-child(1) {
+          transform: translateY(8.5px) rotate(45deg);
+        }
+
+        .nav__hamburger-bar:nth-child(3) {
+          transform: translateY(-8.5px) rotate(-45deg);
+        }
+      }
+    }
+
+    &-bar {
+      background-color: white;
+      border-radius: 3px;
+      display: block;
+      width: 1.2em;
+      height: 0.2em;
+      margin: 0.2em auto;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
